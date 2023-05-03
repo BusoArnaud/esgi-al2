@@ -1,0 +1,26 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  div:is(:first-child) {
+    font-size: 5rem;
+  }
+
+  .actions {
+    display: flex;
+    margin-top: 20px;
+    app-button:not(:last-child) {
+      margin-right: 10px;
+    }
+
+    div[appCustomButton] {
+      button {
+        padding: 5px 20px;
+        border-radius: 8px;
+        background-color: lightblue;
+      }
+    }
+  }
+}
+
