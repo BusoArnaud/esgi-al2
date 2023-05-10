@@ -7,8 +7,8 @@ import { CounterComponent } from './components/counter/counter.component';
 import { ButtonComponent } from './components/button/button.component';
 import { CustomButtonDirective } from './directives/custom-button.directive';
 import { PrimeNumberPipe } from './pipes/prime-number.pipe';
-import {ListComponent} from "./pages/list/list.component";
-import {DetailsComponent} from "./pages/detail/details.component";
+import { ListComponent } from "./pages/list/list.component";
+import { DetailComponent } from "./pages/detail/detail.component";
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 @NgModule({
@@ -19,7 +19,7 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
     CustomButtonDirective,
     PrimeNumberPipe,
     ListComponent,
-    DetailsComponent,
+    DetailComponent,
     NotFoundComponent
   ],
   imports: [

@@ -5,7 +5,7 @@ import {Router} from "@angular/router";
   templateUrl: './detail.component.html',
   styleUrls: ['./detail.component.scss']
 })
-export class DetailsComponent {
+export class DetailComponent {
 
   dishes: Array<string>;
   constructor(
