@@ -12,7 +12,6 @@ export class DetailComponent {
     private router: Router
   ) {
     this.dishes = history.state.data;
-    console.log(this.dishes);
   }
 
   backWithHistory(): void {
