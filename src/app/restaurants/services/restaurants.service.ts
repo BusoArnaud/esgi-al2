@@ -34,4 +34,8 @@ export class RestaurantsService {
     const res = this.restaurants.filter(res => res.id === +id);
     return res[0].food;
   }
+
+  addNewRestaurant(restaurant: {title: string; desc: string; food: Array<string>}) {
+    this.restaurants.push({...restaurant, id: this.restaurants.length + 1})
+  }
 }

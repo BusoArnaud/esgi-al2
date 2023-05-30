@@ -5,6 +5,8 @@ import {DetailComponent} from "./pages/detail/detail.component";
 import {SharedModule} from "../shared/shared.module";
 import {RouterModule} from "@angular/router";
 import {RestaurantsRoutingModule} from "./restaurants-routing.module";
+import { FormTDComponent } from './pages/form-td/form-td.component';
+import {FormsModule} from "@angular/forms";
 
 
 
@@ -12,12 +14,14 @@ import {RestaurantsRoutingModule} from "./restaurants-routing.module";
   declarations: [
     ListComponent,
     DetailComponent,
+    FormTDComponent,
   ],
   imports: [
     CommonModule,
     SharedModule,
     RouterModule,
     RestaurantsRoutingModule,
+    FormsModule,
   ]
 })
 export class RestaurantsModule { }

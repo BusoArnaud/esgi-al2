@@ -1,6 +1,10 @@
 <ng-container *ngFor="let res of restaurants">
-  <div class="container" [routerLink]="[res.id]" [state]="{data: res.food}">
+  <div class="container" [routerLink]="['detail', res.id]" [state]="{data: res.food}">
     <h4>{{ res.title }}</h4>
     <p>{{ res.desc }}</p>
   </div>
 </ng-container>
+
+<div class="add">
+  <app-button [text]="'Add restaurant'" [color]="'green'" (buttonClicked)="redirectToFormTD()"></app-button>
+</div>

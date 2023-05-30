@@ -1,0 +1,24 @@
+<div class="container">
+  <form (ngSubmit)="submitRestaurant()" #restaurantForm="ngForm">
+    <div>
+      <label for="restaurantTitle">Title</label>
+      <input type="text" class="form-control" id="restaurantTitle"
+             required
+             [(ngModel)]="restaurantTitle" name="restaurantTitle">
+    </div>
+
+    <div>
+      <label for="restaurantDescription">Description</label>
+      <input type="text" class="form-control" id="restaurantDescription"
+             required
+             [(ngModel)]="restaurantDescription" name="restaurantDescription">
+    </div>
+
+    <button type="submit" [disabled]="!restaurantForm.form.valid">Submit</button>
+
+  </form>
+
+  <div class="back">
+    <app-button [text]="'Back'" [color]="'blue'" (buttonClicked)="redirectToRestaurants()"></app-button>
+  </div>
+</div>
