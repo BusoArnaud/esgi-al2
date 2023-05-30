@@ -1,21 +1,27 @@
-import {Component} from '@angular/core';
-import {Router} from "@angular/router";
+import {Component, OnDestroy} from '@angular/core';
+import {ActivatedRoute, Router} from "@angular/router";
+import {Subscription} from "rxjs";
+import {RestaurantsService} from "../../services/restaurants.service";
 
 @Component({
   templateUrl: './detail.component.html',
   styleUrls: ['./detail.component.scss']
 })
-export class DetailComponent {
+export class DetailComponent implements OnDestroy {
 
-  dishes: Array<string>;
+  private routeSub: Subscription;
+
+  dishes: Array<string> = [];
   constructor(
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute,
+    private restaurantsService: RestaurantsService,
   ) {
-    this.dishes = history.state.data;
+    this.routeSub = route.params.subscribe(params => this.dishes = restaurantsService.getFood(params['id']));
   }
 
-  backWithHistory(): void {
-    history.back();
+  ngOnDestroy() {
+    this.routeSub.unsubscribe();
   }
 
   backWithRouter(): void {
