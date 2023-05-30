@@ -4,14 +4,25 @@
       <label for="restaurantTitle">Title</label>
       <input type="text" class="form-control" id="restaurantTitle"
              required
-             [(ngModel)]="restaurantTitle" name="restaurantTitle">
+             [(ngModel)]="restaurantTitle" name="restaurantTitle"
+             #resTitle="ngModel">
+      <div *ngIf="resTitle.touched && !resTitle.valid" class="alert">
+        Value is required !
+      </div>
+      <div *ngIf="alreadyExist" class="alert">
+        This restaurant name already exists !
+      </div>
     </div>
 
     <div>
       <label for="restaurantDescription">Description</label>
       <input type="text" class="form-control" id="restaurantDescription"
              required
-             [(ngModel)]="restaurantDescription" name="restaurantDescription">
+             [(ngModel)]="restaurantDescription" name="restaurantDescription"
+             #resDesc="ngModel">
+      <div *ngIf="resDesc.touched && !resTitle.valid" class="alert">
+        Value is required !
+      </div>
     </div>
 
     <button type="submit" [disabled]="!restaurantForm.form.valid">Submit</button>

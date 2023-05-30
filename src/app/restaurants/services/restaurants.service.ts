@@ -38,4 +38,8 @@ export class RestaurantsService {
   addNewRestaurant(restaurant: {title: string; desc: string; food: Array<string>}) {
     this.restaurants.push({...restaurant, id: this.restaurants.length + 1})
   }
+
+  canCreateRestaurant(title: string) {
+    return this.restaurants.findIndex(res => res.title === title);
+  }
 }
