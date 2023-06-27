@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class RestaurantsService {
+export class RestaurantService {
 
   private restaurants: Array<{id: number; title: string; desc: string; food: Array<string>}> = [
     {
@@ -39,7 +39,7 @@ export class RestaurantsService {
     this.restaurants.push({...restaurant, id: this.restaurants.length + 1})
   }
 
-  canCreateRestaurant(title: string) {
+  canCreateRestaurant(title: string | null) {
     return this.restaurants.findIndex(res => res.title === title);
   }
 }

@@ -1,10 +1,14 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {ButtonModule} from "../../components/button/button.component";
+import {SharedModule} from "../../shared/shared.module";
 
 @Component({
   selector: 'app-counter',
   templateUrl: './counter.component.html',
   styleUrls: ['./counter.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [ButtonModule, SharedModule]
 })
 export class CounterComponent {
 

@@ -1,6 +1,7 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {RestaurantsService} from "../../services/restaurants.service";
+import {RestaurantService} from "../../services/restaurant.service";
 import {Router} from "@angular/router";
+import {ServiceApiService} from "../../../services/service-api.service";
 
 @Component({
   templateUrl: './list.component.html',
@@ -12,14 +13,20 @@ export class ListComponent {
   restaurants: Array<{id: number; title: string; desc: string; food: Array<string>}> = [];
 
   constructor(
-    private restaurantsService: RestaurantsService,
+    private restaurantsService: RestaurantService,
     private router: Router,
+    private serviceApi: ServiceApiService
   ) {
     this.restaurants = restaurantsService.getRestaurants();
+    this.serviceApi.getMock().subscribe(data => console.log(data));
   }
 
   redirectToFormTD() {
-    this.router.navigate(['restaurants/formTD']).then()
+    this.router.navigate(['restaurant/formTD']).then()
+  }
+
+  redirectToFormRF() {
+    this.router.navigate(['restaurant/formRF']).then()
   }
 
 }
