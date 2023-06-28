@@ -12,6 +12,7 @@ import {ButtonModule} from "../components/button/button.component";
 import {MatInputModule} from "@angular/material/input";
 import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
+import {TranslateModule} from "@ngx-translate/core";
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import {MatButtonModule} from "@angular/material/button";
     MatIconModule,
     MatButtonModule,
     ReactiveFormsModule,
+    TranslateModule,
   ]
 })
 export class RestaurantModule { }

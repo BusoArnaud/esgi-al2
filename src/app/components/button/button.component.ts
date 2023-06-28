@@ -17,12 +17,11 @@ export class ButtonComponent {
   emitEvent(): void {
     this.buttonClicked.emit();
   }
-
 }
 
 @NgModule({
   declarations: [ButtonComponent],
   exports: [ButtonComponent],
-  imports: [CommonModule, MatButtonModule]
+  imports: [CommonModule, MatButtonModule],
 })
 export class ButtonModule {}
