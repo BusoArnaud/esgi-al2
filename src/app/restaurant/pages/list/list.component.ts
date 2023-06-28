@@ -1,7 +1,9 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {RestaurantService} from "../../services/restaurant.service";
 import {Router} from "@angular/router";
-import {ServiceApiService} from "../../../services/service-api.service";
+import {RestaurantApiService} from "../../../services/restaurant-api.service";
+import {RestaurantModel} from "../../models/restaurant.model";
+import {Observable} from "rxjs";
 
 @Component({
   templateUrl: './list.component.html',
@@ -10,15 +12,13 @@ import {ServiceApiService} from "../../../services/service-api.service";
 })
 export class ListComponent {
 
-  restaurants: Array<{id: number; title: string; desc: string; food: Array<string>}> = [];
+  restaurantsSub$: Observable<Array<RestaurantModel>>;
 
   constructor(
-    private restaurantsService: RestaurantService,
+    private restaurantService: RestaurantService,
     private router: Router,
-    private serviceApi: ServiceApiService
   ) {
-    this.restaurants = restaurantsService.getRestaurants();
-    this.serviceApi.getMock().subscribe(data => console.log(data));
+    this.restaurantsSub$ = this.restaurantService.restaurants$;
   }
 
   redirectToFormTD() {

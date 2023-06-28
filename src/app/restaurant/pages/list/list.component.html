@@ -2,7 +2,7 @@
 <br>
 {{'restaurant.message' | translate}}
 
-<ng-container *ngFor="let res of restaurants">
+<ng-container *ngFor="let res of (restaurantsSub$ | async)">
   <div class="container" [routerLink]="['detail', res.id]" [state]="{data: res.food}">
     <h4>{{ res.title }}</h4>
     <p>{{ res.desc }}</p>

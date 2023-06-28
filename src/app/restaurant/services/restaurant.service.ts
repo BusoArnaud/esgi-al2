@@ -1,33 +1,30 @@
 import { Injectable } from '@angular/core';
+import {RestaurantApiService} from "../../services/restaurant-api.service";
+import {BehaviorSubject, take} from "rxjs";
+import {RestaurantModel} from "../models/restaurant.model";
 
 @Injectable({
   providedIn: 'root'
 })
 export class RestaurantService {
 
-  private restaurants: Array<{id: number; title: string; desc: string; food: Array<string>}> = [
-    {
-      id: 1,
-      title: 'Fontaine de Trevi',
-      desc: 'Cuisine de famille italienne',
-      food: ['pizza', 'pasta', 'tiramisu']
-    },
-    {
-      id: 2,
-      title: 'Taj Mahal',
-      desc: 'Cuisine indienne',
-      food: ['masala dosa', 'dal makhani', 'pani puri']
-    },
-    {
-      id: 3,
-      title: 'Sanctuaire Asakusa',
-      desc: 'Cuisine japonaise',
-      food: ['onigiri', 'sushi & sashimi', 'ramen']
-    }
-  ];
+  private restaurants: Array<RestaurantModel> = [];
+  restaurants$: BehaviorSubject<Array<RestaurantModel>> = new BehaviorSubject<Array<RestaurantModel>>(this.restaurants);
 
-  getRestaurants() {
-    return this.restaurants;
+  constructor(
+    private restaurantApiService: RestaurantApiService
+  ) {
+  }
+
+  getRestaurants()
+  {
+    this.restaurantApiService
+      .getMock()
+      .pipe(take(1))
+      .subscribe((res: Array<RestaurantModel>) => {
+        this.restaurants = res;
+        this.restaurants$.next(this.restaurants);
+      })
   }
 
   getFood(id: number) {
@@ -36,7 +33,8 @@ export class RestaurantService {
   }
 
   addNewRestaurant(restaurant: {title: string; desc: string; food: Array<string>}) {
-    this.restaurants.push({...restaurant, id: this.restaurants.length + 1})
+    this.restaurants.push({...restaurant, id: this.restaurants.length + 1});
+    this.restaurants$.next(this.restaurants);
   }
 
   canCreateRestaurant(title: string | null) {

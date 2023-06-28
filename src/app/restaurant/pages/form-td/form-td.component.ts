@@ -20,7 +20,7 @@ export class FormTDComponent {
   ) {
   }
   submitRestaurant() {
-    if (this.restaurantService.canCreateRestaurant(this.restaurantTitle) < 0 ) {
+    if (this.restaurantTitle !='' && this.restaurantDescription != '' && this.restaurantService.canCreateRestaurant(this.restaurantTitle) < 0 ) {
       this.restaurantService.addNewRestaurant(
         {title: this.restaurantTitle, desc: this.restaurantDescription, food: []}
       );

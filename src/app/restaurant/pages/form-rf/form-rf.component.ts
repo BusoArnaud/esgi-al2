@@ -22,7 +22,7 @@ export class FormRFComponent {
   }
 
   saveRestaurant() {
-    if (this.restaurantService.canCreateRestaurant(this.restaurantForm.controls.restaurantTitleControl.value) < 0 ) {
+    if (this.restaurantForm.valid && this.restaurantService.canCreateRestaurant(this.restaurantForm.controls.restaurantTitleControl.value) < 0 ) {
       this.restaurantService.addNewRestaurant(
         {
           title: (this.restaurantForm.controls.restaurantTitleControl.value) as string,
