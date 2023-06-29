@@ -4,6 +4,9 @@ import {Router} from "@angular/router";
 import {RestaurantApiService} from "../../../services/restaurant-api.service";
 import {RestaurantModel} from "../../models/restaurant.model";
 import {Observable} from "rxjs";
+import {selectRestaurantList} from "../../../store/app.selectors";
+import {Store} from "@ngrx/store";
+
 
 @Component({
   templateUrl: './list.component.html',
@@ -17,8 +20,10 @@ export class ListComponent {
   constructor(
     private restaurantService: RestaurantService,
     private router: Router,
+    private store: Store,
   ) {
-    this.restaurantsSub$ = this.restaurantService.restaurants$;
+    this.restaurantsSub$ = this.store.select(selectRestaurantList)
+    //this.restaurantsSub$ = this.restaurantService.restaurants$;
   }
 
   redirectToFormTD() {
